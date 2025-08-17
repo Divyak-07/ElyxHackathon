@@ -33,6 +33,14 @@ class EpisodeAnalysis(BaseModel):
     final_outcome: str
     persona_analysis: PersonaState
 
+class SentimentPoint(BaseModel):
+    month: str
+    score: float
+
+class WeeklyReport(BaseModel):
+    week_of: str
+    summary: str
+
 # --- FastAPI Application Setup ---
 app = FastAPI(
     title="Elyx Member Journey API",
@@ -102,6 +110,45 @@ def get_ai_analysis(month_name: str, messages: List[Message]) -> EpisodeAnalysis
             final_outcome="Steady progress on established health goals.",
             persona_analysis={ "before": "Following the established plan.", "after": "More integrated and consistent with the established health protocols." }
         )
+
+def get_sentiment_scores() -> List[SentimentPoint]:
+    """Simulates an AI sentiment analysis on Rohan's messages."""
+    member_messages = [msg for msg in MESSAGES if msg.role == 'Member']
+    monthly_scores = {}
+    
+    for msg in member_messages:
+        month = msg.timestamp.strftime('%Y-%m')
+        score = 0 # Neutral
+        content = msg.content.lower()
+        if any(word in content for word in ['good', 'excellent', 'better', 'powerful', 'great', 'successful']):
+            score = 1 # Positive
+        elif any(word in content for word in ['issue', 'problem', 'anxious', 'frustration', 'setback', 'wrong', 'not heard']):
+            score = -1 # Negative
+        
+        if month not in monthly_scores:
+            monthly_scores[month] = []
+        monthly_scores[month].append(score)
+
+    sentiment_trend = []
+    for month, scores in sorted(monthly_scores.items()):
+        avg_score = sum(scores) / len(scores)
+        month_str = datetime.strptime(month, '%Y-%m').strftime('%b %Y')
+        sentiment_trend.append(SentimentPoint(month=month_str, score=round(avg_score, 2)))
+        
+    return sentiment_trend
+
+def get_weekly_report(end_date_str: str) -> WeeklyReport:
+    """Simulates an AI generating a weekly report for a specific week."""
+    # For this demo, we'll return a pre-written report for a specific week in August.
+    summary = """
+    <ul class='list-disc list-inside space-y-2'>
+        <li><span class='font-semibold'>Key Achievement:</span> Successfully managed muscle soreness from the new strength program by implementing a post-workout nutrition protocol (protein/creatine shake). Recovery metrics improved significantly.</li>
+        <li><span class='font-semibold'>New Goal:</span> Formalized long-term longevity goals with Rachel, including targets for strength (Deadlift 1.5x BW), cardio (VO2 Max), and stability.</li>
+        <li><span class='font-semibold'>Logistics:</span> Resolved skin irritation from the Whoop strap by switching to a new band material.</li>
+        <li><span class='font-semibold'>Focus for Next Week:</span> Continue adapting to the new strength program and schedule the baseline DEXA and VO2 Max tests.</li>
+    </ul>
+    """
+    return WeeklyReport(week_of="August 11, 2025", summary=summary)
 
 # --- API Endpoints ---
 @app.get("/", tags=["General"])
