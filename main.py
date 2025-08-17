@@ -45,7 +45,7 @@ origins = [
     "null",
     "http://localhost",
     "http://localhost:8080",
-    "https://elyxhackathon.netlify.app/"
+    "https://elyxhackathon.netlify.app"
 ]
 app.add_middleware(
     CORSMiddleware,
