@@ -209,6 +209,17 @@ async def get_episode_analysis(month_name: str):
     analysis = get_ai_analysis(month_name, month_messages)
     return analysis
 
+@app.get("/metrics/sentiment", response_model=List[SentimentPoint], tags=["AI Metrics"])
+async def get_sentiment_trend():
+    """NEW: Returns the simulated sentiment trend of the member over time."""
+    if not MESSAGES: raise HTTPException(status_code=404, detail="Journey data not loaded.")
+    return get_sentiment_scores()
+
+@app.get("/reports/weekly", response_model=WeeklyReport, tags=["AI Reports"])
+async def generate_weekly_report(end_date: str = "2025-08-18"):
+    """NEW: Generates a simulated AI weekly report for a given week."""
+    if not MESSAGES: raise HTTPException(status_code=404, detail="Journey data not loaded.")
+    return get_weekly_report(end_date)
 
 
 
