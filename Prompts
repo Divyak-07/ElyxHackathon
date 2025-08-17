@@ -1,0 +1,50 @@
+Some Prompts used to complete the hackathon
+
+
+1.on consulting with my friends i came to the conclusion that instead of generating random chats i should focus more on the patients concerns and his priorities should be given the most importance unless the disease is a bit serious in that case also we should aim at maximing the output for the user whether its related to extra advices like buying some products or what can be an alternative(monetary factors should also be considered) as well as their time priority they must not be made to feel like they have to force the medical procedure on themselves rather make it in such a way that is becomes a part of there everyday life
+
+2.now on the basis on above logic i want you to generate 8 months chat logs and the others things which you earlier did keeping my pov in mind and making the decision hierarchy on thoose factors only . As humans are dynamic in nature everthing wont go as per planned so there should also be a mechanism to quickly adopt to the changes when requested
+
+3.now after developing a dynamic interface at both the ends we now will have many options i want you to update the query section where we can question and decision which was earlier made and expect the actual reasoning which led to such decision and the following steps . AmONG these things we must not forget our constraints that are -Some restrictions you need to implement:
+
+- 1 full diagnostic test panel needs to be done for the member every three
+
+months to check their progress on different biomarkers.
+
+- Assume the member also does some research or reads about health or gets
+
+curious questions about certain topics. So, there should be up to 5
+
+conversations started by the member per week on average.
+
+- The member is committing 5 hours per week on average to follow the plan.
+
+- Assume exercises are being updated every 2 weeks based on the client's
+
+progress.
+
+- The member travels for at least 1 week out of every 4 weeks on business
+
+trips.
+
+- The members’ primary place of residence is Singapore.
+
+- If you are generating report communication, assume you can just have text
+
+messages highlighting either the areas which have problems or tracking of
+
+something which the member or team cares about.
+
+- When Elyx proposes a plan, the member sticks to it properly ~50% of the
+
+time. That means ~50% of the time, the plan needs to be changed or
+
+improved based on the members preferences / logistics constraints.
+
+- Remember, the member is generally not sick, but they can have 1 chronic
+
+condition that they are managing (eg. high sugar, high BP) and its also mentioned that we should generate our own chats and not depend on the given example so suggest me how will you implement these
+4.there one thing i have noticed and its not good its that mention monetrary in each question or response that potrays bad image and it feel a low level model is generating with fixed options
+5.Analyze the given code and try to generate a frontend code where 1 full diagnostic test panel needs to be done for the member every three months to check their progress on different biomarkers. - Assume the member also does some research or reads about health or gets curious questions about certain topics. So, there should be up to 5 conversations started by the member per week on average. - The member is committing 5 hours per week on average to follow the plan. - Assume exercises are being updated every 2 weeks based on the client's progress. - The member travels for at least 1 week out of every 4 weeks on business trips. - The members’ primary place of residence is Singapore. - If you are generating report communication, assume you can just have text messages highlighting either the areas which have problems or tracking of something which the member or team cares about. - When Elyx proposes a plan, the member sticks to it properly ~50% of the time. That means ~50% of the time, the plan needs to be changed or improved based on the members preferences / logistics constraints. - Remember, the member is generally not sick, but they can have 1 chronic condition that they are managing (eg. high sugar, high BP) for example you can use the case of rohan but dont make it a hardandfast rule for every case use it for learning purpose only. The site should be dynamic till some extent and the tone of messages should be polite yet formal in some messages whill have a basic convo we must have a friendly tone while concerning a serious issue we must sound formal but we also need to keep in mind that the patient should not feel stressed
+6.Generate a code for keyword based agent in the backend so that it can answer queries related to the decision made
+7.yup i want auto detect sentiment for eg why did my plan change might be a curious question also not necessarily in frustration
