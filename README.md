@@ -1,7 +1,7 @@
 Elyx Hackathon: Member Journey Visualization
 Our submission for the Elyx Life Hackathon, designed to visualize a member's complex 8-month health journey, making it easy to understand progress, context, and the rationale behind every decision.
 
-Team: [Your Team Name]
+Team: 3.2bit
 
 Live Demo: https://elyxhackathon.netlify.app/
 
